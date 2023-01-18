@@ -13,15 +13,17 @@ generator dbml {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  email     String   @unique
-  password  String
-  firstname String?
-  lastname  String?
-  posts     Post[]
-  role      Role
+  id          String        @id @default(cuid())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  email       String        @unique
+  password    String
+  firstname   String?
+  lastname    String?
+  posts       Post[]
+  role        Role @default(USER)
+  appointmentsAsAuthor Appointment[] @relation("Author")
+  appointmentsAsPatient Appointment[] @relation("Patient")
 }
 
 model Post {
@@ -35,7 +37,23 @@ model Post {
   authorId  String?
 }
 
+model Appointment {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  date      DateTime
+  title     String
+  content   String?
+  author    User?    @relation("Author",fields: [authorId], references: [id])
+  authorId  String?
+  patient   User?    @relation("Patient",fields: [patientId], references: [id])
+  patientId String?
+}
+
 enum Role {
   ADMIN
   USER
+  PATIENT
+  DOCTOR
+  LABORATORY
 }

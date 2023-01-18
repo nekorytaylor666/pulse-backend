@@ -112,6 +112,9 @@ type Query {
 """User role"""
 enum Role {
   ADMIN
+  DOCTOR
+  LABORATORY
+  PATIENT
   USER
 }
 

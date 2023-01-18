@@ -48,7 +48,16 @@ async function main() {
     },
   });
 
-  console.log({ user1, user2 });
+  const doctor = await prisma.user.create({
+    data: {
+      email: 'doctor@test.com',
+      firstname: 'Doctor',
+      lastname: 'Test',
+      role: 'DOCTOR',
+      password: '$2b$10$EpRnTzVlqHNP0.fUbXUwSOyuiXe/QLSUG6xNekdHgTGmrpHEfIoxm', // secret42
+    },
+  });
+  console.log({ user1, user2, doctor });
 }
 
 main()
