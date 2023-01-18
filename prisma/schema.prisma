@@ -44,10 +44,10 @@ model Appointment {
   date      DateTime
   title     String
   content   String?
-  author    User?    @relation("Author",fields: [authorId], references: [id])
-  authorId  String?
-  patient   User?    @relation("Patient",fields: [patientId], references: [id])
-  patientId String?
+  author    User    @relation("Author",fields: [authorId], references: [id])
+  authorId  String
+  patient   User    @relation("Patient",fields: [patientId], references: [id])
+  patientId String
 }
 
 enum Role {
@@ -56,4 +56,12 @@ enum Role {
   PATIENT
   DOCTOR
   LABORATORY
+}
+
+
+generator nestgraphql {
+    provider = "node node_modules/prisma-nestjs-graphql"
+    // for yarn monorepos
+    // provider = "prisma-nestjs-graphql"
+    output = "../src/@generated"
 }

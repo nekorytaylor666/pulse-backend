@@ -34,10 +34,10 @@ Table Appointment {
   date DateTime [not null]
   title String [not null]
   content String
-  author User
-  authorId String
-  patient User
-  patientId String
+  author User [not null]
+  authorId String [not null]
+  patient User [not null]
+  patientId String [not null]
 }
 
 Enum Role {

@@ -4,6 +4,6 @@ prisma/*.db
 coverage/
 
 .DS_Store
-
+src/@generated
 prisma/migrations/dev/
 .env

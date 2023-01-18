@@ -97,6 +97,7 @@
     "prettier": "2.7.1",
     "prisma": "4.1.0",
     "prisma-dbml-generator": "0.10.0-dev.0",
+    "prisma-nestjs-graphql": "^17.1.0",
     "supertest": "6.2.4",
     "ts-jest": "28.0.7",
     "ts-loader": "9.3.1",
